@@ -34,19 +34,34 @@ object PasswordGenerator {
             return null
         }
 
+        val countSpecial = length / PART_SPECIAL_CHARS
+        val countDigit = length / PART_DIGITS
+        val countAlpha = length - (countDigit + countSpecial)
+
         val builder: StringBuilder = StringBuilder()
 
-        for (i in 0 until length) {
-            if (i <= length / PART_SPECIAL_CHARS) {
-                val pos = random.nextInt(specialChars.length)
-                builder.append(specialChars[pos])
-            } else if (i <= length / PART_DIGITS) {
-                val pos = random.nextInt(digits.length)
-                builder.append(digits[pos])
-            } else {
-                val pos = random.nextInt(alphabet.length)
-                builder.append(alphabet[pos])
-            }
+        repeat(countSpecial) {
+            builder.append(
+                specialChars[
+                    random.nextInt(specialChars.length),
+                ],
+            )
+        }
+
+        repeat(countDigit) {
+            builder.append(
+                digits[
+                    random.nextInt(digits.length),
+                ],
+            )
+        }
+
+        repeat(countAlpha) {
+            builder.append(
+                alphabet[
+                    random.nextInt(alphabet.length),
+                ],
+            )
         }
 
         return builder

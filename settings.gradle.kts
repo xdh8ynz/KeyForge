@@ -4,3 +4,5 @@ plugins {
 rootProject.name = "KeyForge"
 
 include(":core")
+
+include(":console")
