@@ -6,3 +6,5 @@ rootProject.name = "KeyForge"
 include(":core")
 
 include(":console")
+
+include(":web")
